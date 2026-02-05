@@ -92,9 +92,7 @@ export default async function AccountPage() {
               </CardHeader>
               <CardContent className="flex flex-col items-center justify-center gap-4 pt-6">
                 <div className="rounded-lg bg-white p-2 shadow-inner">
-                  <TicketQRZoom
-                    qrCodeUrl={`https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${activeTicket.qrCode}`}
-                  />
+                  <TicketQRZoom ticketCode={activeTicket.qrCode} />
                 </div>
               </CardContent>
             </Card>
