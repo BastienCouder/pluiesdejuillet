@@ -2,7 +2,7 @@
 
 Application de gestion et réservation de conférences pour le festival "Les Pluies de Juillet", développée avec Next.js 16, Better Auth et Drizzle ORM.
 
-## 🛠 Technologies
+## Technologies
 
 - **Framework** : [Next.js 16](https://nextjs.org/) (App Router)
 - **Langage** : [TypeScript](https://www.typescriptlang.org/)
@@ -12,7 +12,7 @@ Application de gestion et réservation de conférences pour le festival "Les Plu
 - **UI** : [Tailwind CSS](https://tailwindcss.com/) + [Shadcn UI](https://ui.shadcn.com/)
 - **Validation** : [Zod](https://zod.dev/)
 
-## 🚀 Prérequis
+## Prérequis
 
 - Node.js 20+
 - pnpm (recommandé) ou npm
@@ -60,7 +60,7 @@ Application de gestion et réservation de conférences pour le festival "Les Plu
     pnpm db:seed
     ```
 
-## 🏃‍♂️ Démarrage
+## Démarrage
 
 Lancez le serveur de développement :
 
@@ -70,7 +70,7 @@ pnpm dev
 
 L'application sera accessible sur [http://localhost:3000](http://localhost:3000).
 
-## 📜 Scripts Disponibles
+## Scripts Disponibles
 
 - `pnpm dev` : Lance le serveur de développement (avec Turbopack).
 - `pnpm build` : Compile l'application pour la production.
@@ -79,12 +79,13 @@ L'application sera accessible sur [http://localhost:3000](http://localhost:3000)
 - `pnpm db:push` : Synchronise le schéma Drizzle avec la base de données.
 - `pnpm db:studio` : Ouvre Drizzle Studio pour visualiser les données.
 
-## 🔒 Sécurité & Accessibilité
+## Sécurité & Accessibilité
 
 - **Authentification** : Sécurisée par Better Auth avec rate limiting.
 - **Accessibilité** : Respect des normes WCAG (attributs ARIA, contraste, navigation clavier).
 - **Architecture** : Separation of concerns (API routes vs Server Actions vs Client Components).
 
-## 📄 Licence
+## Licence
+
 
 Ce projet est sous licence MIT.
