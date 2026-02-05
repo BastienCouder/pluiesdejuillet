@@ -35,7 +35,7 @@ async function main() {
         {
             id: uuidv4(),
             title: "L'Océan, notre avenir",
-            description: "Plongée au cœur des enjeux maritimes et de la biodiversité.",
+            description: "Plongée au coeur des enjeux maritimes et de la biodiversité.",
             theme: "Biodiversité",
             startAt: new Date("2026-07-17T14:00:00"),
             endAt: new Date("2026-07-17T15:30:00"),

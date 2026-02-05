@@ -18,9 +18,13 @@ Application de gestion et réservation de conférences pour le festival "Les Plu
 - pnpm (recommandé) ou npm
 - Une base de données PostgreSQL (locale ou Docker)
 
+    ```bash
     git clone https://github.com/bastiencouder/pluiesdejuillet.git
+    ```
+
+    ```bash
     cd pluiesdejuillet
-    
+    ```
 
     ```bash
     pnpm install
