@@ -6,7 +6,7 @@ import { NextResponse } from 'next/server'
 export async function POST(req: Request) {
   try {
     const ip = req.headers.get('x-forwarded-for') || 'unknown'
-    const isAllowed = rateLimit(ip, { limit: 5, windowMs: 60 * 1000 })
+    const isAllowed = rateLimit('sign-in:' + ip, { limit: 5, windowMs: 60 * 1000 })
     if (!isAllowed.success) {
       return NextResponse.json(
         {

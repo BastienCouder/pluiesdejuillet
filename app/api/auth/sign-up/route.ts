@@ -1,12 +1,13 @@
 import { signUpService } from '@/lib/services/auth'
 import { signUpSchema } from '@/lib/validators/auth'
 import { rateLimit } from '@/lib/rate-limit'
+
 import { NextResponse } from 'next/server'
 
 export async function POST(req: Request) {
   try {
     const ip = req.headers.get('x-forwarded-for') || 'unknown'
-    const isAllowed = rateLimit(ip, { limit: 3, windowMs: 60 * 60 * 1000 })
+    const isAllowed = rateLimit('sign-up:' + ip, { limit: 3, windowMs: 60 * 60 * 1000 })
 
     if (!isAllowed.success) {
       return NextResponse.json(

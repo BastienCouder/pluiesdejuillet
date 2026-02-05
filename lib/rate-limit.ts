@@ -1,35 +1,47 @@
-export type RateLimitConfig = {
+import { NextRequest } from 'next/server'
+
+interface RateLimitConfig {
   limit: number
   windowMs: number
 }
 
-const trackers = new Map<string, { count: number; expiresAt: number }>()
+interface RateLimitStore {
+  count: number
+  resetTime: number
+}
+
+const store = new Map<string, RateLimitStore>()
 
 export function rateLimit(key: string, config: RateLimitConfig) {
   const now = Date.now()
-  const record = trackers.get(key)
+  const record = store.get(key)
 
-  if (!record || now > record.expiresAt) {
-    trackers.set(key, {
+  if (!record || now > record.resetTime) {
+    store.set(key, {
       count: 1,
-      expiresAt: now + config.windowMs,
+      resetTime: now + config.windowMs,
     })
     return { success: true }
   }
 
-  if (record.count >= config.limit) {
+  record.count += 1
+  if (record.count > config.limit) {
     return { success: false }
   }
 
-  record.count++
   return { success: true }
 }
 
-setInterval(() => {
-  const now = Date.now()
-  for (const [key, record] of trackers.entries()) {
-    if (now > record.expiresAt) {
-      trackers.delete(key)
-    }
-  }
-}, 60000)
+const GLOBAL_LIMIT = 500
+const GLOBAL_WINDOW = 60 * 1000 // 1 minute
+
+export async function checkRateLimit(request: NextRequest | Request) {
+  const ip =
+    request.headers.get('x-forwarded-for')?.split(',')[0] ||
+    request.headers.get('x-real-ip') ||
+    'unknown'
+
+  const result = rateLimit(ip, { limit: GLOBAL_LIMIT, windowMs: GLOBAL_WINDOW })
+
+  return { rateLimited: !result.success }
+}

@@ -1,8 +1,15 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { getSessionCookie } from 'better-auth/cookies'
 import { link } from './constants/link'
+import { checkRateLimit } from './lib/rate-limit'
 
 export async function proxy(request: NextRequest) {
+  const { rateLimited } = await checkRateLimit(request)
+
+  if (rateLimited) {
+    return NextResponse.json({ error: 'Too Many Requests' }, { status: 429 })
+  }
+
   const sessionCookie = getSessionCookie(request)
   const { pathname } = request.nextUrl
 
