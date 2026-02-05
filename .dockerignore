@@ -3,3 +3,11 @@
 
 # Docker volumes
 postgres_data/
+
+# Build output
+build/
+out/
+.next/
+
+# Node modules
+node_modules/

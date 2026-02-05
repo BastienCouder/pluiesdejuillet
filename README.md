@@ -29,17 +29,17 @@ Les identifiants sont définis dans `docker-compose.yml` (par défaut : user/pas
 - pnpm (recommandé) ou npm
 - Une base de données PostgreSQL (locale ou Docker)
 
-    ```bash
-    git clone https://github.com/bastiencouder/pluiesdejuillet.git
-    ```
+  ```bash
+  git clone https://github.com/bastiencouder/pluiesdejuillet.git
+  ```
 
-    ```bash
-    cd pluiesdejuillet
-    ```
+  ```bash
+  cd pluiesdejuillet
+  ```
 
-    ```bash
-    pnpm install
-    ```
+  ```bash
+  pnpm install
+  ```
 
 3.  **Configuration des variables d'environnement**
 

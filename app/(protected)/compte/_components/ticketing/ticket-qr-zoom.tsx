@@ -1,39 +1,43 @@
-"use client";
+'use client'
 
-import { Dialog, DialogContent, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
-import { ZoomIn } from "lucide-react";
-import Image from "next/image";
+import {
+  Dialog,
+  DialogContent,
+  DialogTitle,
+  DialogTrigger,
+} from '@/components/ui/dialog'
+import { ZoomIn } from 'lucide-react'
+import Image from 'next/image'
 
 export function TicketQRZoom({ qrCodeUrl }: { qrCodeUrl: string }) {
-    return (
-        <Dialog>
-            <DialogTitle className="hidden">
-            </DialogTitle>
-            <DialogTrigger asChild>
-                <div className="relative group cursor-pointer">
-                    <div className="bg-white p-2 rounded-lg shadow-inner transition-transform group-hover:scale-105">
-                        <Image
-                            src={qrCodeUrl}
-                            alt="Ticket QR Code"
-                            className="w-32 h-32 object-contain mix-blend-multiply"
-                            width={128}
-                            height={128}
-                        />
-                    </div>
-                    <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity bg-black/10 rounded-lg pointer-events-none">
-                        <ZoomIn className="text-black/50" />
-                    </div>
-                </div>
-            </DialogTrigger>
-            <DialogContent className="sm:max-w-md flex items-center justify-center bg-white border-none p-10">
-                <Image
-                    src={qrCodeUrl}
-                    alt="Ticket QR Code Large"
-                    className="w-80 h-80 object-contain mix-blend-multiply"
-                    width={320}
-                    height={320}
-                />
-            </DialogContent>
-        </Dialog>
-    );
+  return (
+    <Dialog>
+      <DialogTitle className="hidden"></DialogTitle>
+      <DialogTrigger asChild>
+        <div className="group relative cursor-pointer">
+          <div className="rounded-lg bg-white p-2 shadow-inner transition-transform group-hover:scale-105">
+            <Image
+              src={qrCodeUrl}
+              alt="Ticket QR Code"
+              className="h-32 w-32 object-contain mix-blend-multiply"
+              width={128}
+              height={128}
+            />
+          </div>
+          <div className="pointer-events-none absolute inset-0 flex items-center justify-center rounded-lg bg-black/10 opacity-0 transition-opacity group-hover:opacity-100">
+            <ZoomIn className="text-black/50" />
+          </div>
+        </div>
+      </DialogTrigger>
+      <DialogContent className="flex items-center justify-center border-none bg-white p-10 sm:max-w-md">
+        <Image
+          src={qrCodeUrl}
+          alt="Ticket QR Code Large"
+          className="h-80 w-80 object-contain mix-blend-multiply"
+          width={320}
+          height={320}
+        />
+      </DialogContent>
+    </Dialog>
+  )
 }
